@@ -737,4 +737,4 @@ static struct usb_driver snd_us122l_usb_driver = {
 	.supports_autosuspend = 1
 };
 
-module_usb_driver(snd_us122l_usb_driver);
+module_usb_snd_driver(snd_us122l_usb_driver);

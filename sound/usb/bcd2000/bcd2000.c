@@ -452,7 +452,7 @@ static struct usb_driver bcd2000_driver = {
 	.id_table =	id_table,
 };
 
-module_usb_driver(bcd2000_driver);
+module_usb_snd_driver(bcd2000_driver);
 
 MODULE_DEVICE_TABLE(usb, id_table);
 MODULE_AUTHOR("Mario Kicherer, dev@kicherer.org");

@@ -576,7 +576,7 @@ static struct usb_driver toneport_driver = {
 	.id_table = toneport_id_table,
 };
 
-module_usb_driver(toneport_driver);
+module_usb_snd_driver(toneport_driver);
 
 MODULE_DESCRIPTION("TonePort USB driver");
 MODULE_LICENSE("GPL");

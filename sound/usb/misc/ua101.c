@@ -1354,4 +1354,4 @@ static struct usb_driver ua101_driver = {
 #endif
 };
 
-module_usb_driver(ua101_driver);
+module_usb_snd_driver(ua101_driver);

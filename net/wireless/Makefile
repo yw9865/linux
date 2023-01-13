@@ -1,4 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
+
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_NET_WIRELESS) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_CFG80211) += cfg80211.o
 obj-$(CONFIG_LIB80211) += lib80211.o
 obj-$(CONFIG_LIB80211_CRYPT_WEP) += lib80211_crypt_wep.o

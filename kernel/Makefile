@@ -41,6 +41,12 @@ UBSAN_SANITIZE_kcov.o := n
 KMSAN_SANITIZE_kcov.o := n
 CFLAGS_kcov.o := $(call cc-option, -fno-conserve-stack) -fno-stack-protector
 
+KCOV_INSTRUMENT_kcov_vdev.o := n
+KASAN_SANITIZE_kcov_vdev.o := n
+KCSAN_SANITIZE_kcov_vdev.o := n
+UBSAN_SANITIZE_kcov_vdev.o := n
+CFLAGS_kcov_vdev.o := $(call cc-option, -fno-conserve-stack) -fno-stack-protector
+
 obj-y += sched/
 obj-y += locking/
 obj-y += power/
@@ -85,7 +91,11 @@ obj-$(CONFIG_SMP) += stop_machine.o
 obj-$(CONFIG_AUDIT) += audit.o auditfilter.o
 obj-$(CONFIG_AUDITSYSCALL) += auditsc.o audit_watch.o audit_fsnotify.o audit_tree.o
 obj-$(CONFIG_GCOV_KERNEL) += gcov/
+ifdef CONFIG_KCOV_VDEV
+obj-$(CONFIG_KCOV) += kcov_vdev.o
+else
 obj-$(CONFIG_KCOV) += kcov.o
+endif
 obj-$(CONFIG_KPROBES) += kprobes.o
 obj-$(CONFIG_FAIL_FUNCTION) += fail_function.o
 obj-$(CONFIG_KGDB) += debug/

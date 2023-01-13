@@ -118,6 +118,52 @@ static DEFINE_MUTEX(register_mutex);
 static struct snd_usb_audio *usb_chip[SNDRV_CARDS];
 static struct usb_driver usb_audio_driver;
 
+#ifdef CONFIG_USB_FUZZER_DUMP_IDS
+static void snd_device_id_dump_one(const struct usb_device_id *id)
+{
+	char buffer[128];
+	int size = (char *)&id->bInterfaceNumber + sizeof(id->bInterfaceNumber)
+			- (char *)id;
+
+	bin2hex((char *)&buffer[0], (const char *)id, size);
+	buffer[size * 2] = 0;
+	pr_err("SOUNDID: %s\n", &buffer[0]);
+}
+
+static void snd_device_id_dump_static(struct usb_driver *drv)
+{
+	const struct usb_device_id *id = drv->id_table;
+
+	if (id == NULL)
+		return;
+
+	for (; id->idVendor || id->idProduct || id->bDeviceClass ||
+	       id->bInterfaceClass || id->driver_info; id++)
+		snd_device_id_dump_one(id);
+}
+
+#if 0
+static void snd_device_id_dump_dynamic(struct usb_driver *drv)
+{
+	struct usb_dynid *dynid;
+
+	spin_lock(&drv->dynids.lock);
+	list_for_each_entry(dynid, &drv->dynids.list, node)
+		snd_device_id_dump_one(&dynid->id);
+	spin_unlock(&drv->dynids.lock);
+}
+#endif
+#endif
+
+int usb_snd_register(struct usb_driver *drv)
+{
+#ifdef CONFIG_USB_FUZZER_DUMP_IDS
+	snd_device_id_dump_static(drv);
+	//snd_device_id_dump_dynamic(drv);
+#endif
+	return usb_register(drv);
+}
+
 /*
  * disconnect streams
  * called from usb_audio_disconnect()
@@ -1161,4 +1207,4 @@ static struct usb_driver usb_audio_driver = {
 	.supports_autosuspend = 1,
 };
 
-module_usb_driver(usb_audio_driver);
+module_usb_snd_driver(usb_audio_driver);

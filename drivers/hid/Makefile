@@ -2,6 +2,9 @@
 #
 # Makefile for the HID driver
 #
+
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_HID) += $(CFLAGS_KCOV)
+
 hid-y			:= hid-core.o hid-input.o hid-quirks.o
 hid-$(CONFIG_DEBUG_FS)		+= hid-debug.o
 

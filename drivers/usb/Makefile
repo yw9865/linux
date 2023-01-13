@@ -3,6 +3,8 @@
 # Makefile for the kernel USB device drivers.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_USB) += $(CFLAGS_KCOV)
+
 # Object files in subdirectories
 
 obj-$(CONFIG_USB_COMMON)	+= common/

@@ -3,6 +3,8 @@
 # Makefile for the Linux Bluetooth subsystem.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_NET_BLUETOOTH) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_BT)	+= bluetooth.o
 obj-$(CONFIG_BT_RFCOMM)	+= rfcomm/
 obj-$(CONFIG_BT_BNEP)	+= bnep/

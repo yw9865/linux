@@ -236,7 +236,7 @@ static struct usb_driver variax_driver = {
 	.id_table = variax_id_table,
 };
 
-module_usb_driver(variax_driver);
+module_usb_snd_driver(variax_driver);
 
 MODULE_DESCRIPTION("Variax Workbench USB driver");
 MODULE_LICENSE("GPL");

@@ -1,0 +1,5 @@
+config CYSEC
+	tristate "CYSEC PCI driver support"
+	depends on PCI
+	select VIRTIO
+	default n

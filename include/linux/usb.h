@@ -1336,6 +1336,20 @@ extern void usb_deregister_dev(struct usb_interface *intf,
 
 extern int usb_disabled(void);
 
+extern int usb_snd_register(struct usb_driver *);
+
+#define module_usb_snd_driver(__driver) \
+static int __init __driver##_init(void) \
+{ \
+	return usb_snd_register(&(__driver)); \
+} \
+module_init(__driver##_init); \
+static void __exit __driver##_exit(void) \
+{ \
+	usb_deregister(&(__driver)); \
+} \
+module_exit(__driver##_exit)
+
 /* ----------------------------------------------------------------------- */
 
 /*

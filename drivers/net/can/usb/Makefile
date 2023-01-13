@@ -2,6 +2,7 @@
 #
 #  Makefile for the Linux Controller Area Network USB drivers.
 #
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_NET_CAN_USB) += $(CFLAGS_KCOV)
 
 obj-$(CONFIG_CAN_8DEV_USB) += usb_8dev.o
 obj-$(CONFIG_CAN_EMS_USB) += ems_usb.o

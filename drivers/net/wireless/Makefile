@@ -3,6 +3,8 @@
 # Makefile for the Linux Wireless network device drivers.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_NET_WIRELESS) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_WLAN_VENDOR_ADMTEK) += admtek/
 obj-$(CONFIG_WLAN_VENDOR_ATH) += ath/
 obj-$(CONFIG_WLAN_VENDOR_ATMEL) += atmel/

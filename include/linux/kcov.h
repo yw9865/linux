@@ -21,6 +21,12 @@ enum kcov_mode {
 	KCOV_MODE_TRACE_PC = 2,
 	/* Collecting comparison operands mode. */
 	KCOV_MODE_TRACE_CMP = 3,
+	/*
+	 * AFL-style collection.
+	 * Covered branches are hashed and collected in a fixed size buffer
+	 * (see AFL documentation for more information).
+	 */
+	KCOV_MODE_TRACE_AFL = 4,
 };
 
 #define KCOV_IN_CTXSW	(1 << 30)

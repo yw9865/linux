@@ -554,4 +554,4 @@ static struct usb_driver snd_usb_driver = {
 	.id_table 	= snd_usb_id_table,
 };
 
-module_usb_driver(snd_usb_driver);
+module_usb_snd_driver(snd_usb_driver);

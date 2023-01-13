@@ -553,7 +553,7 @@ static struct usb_driver podhd_driver = {
 	.id_table = podhd_id_table,
 };
 
-module_usb_driver(podhd_driver);
+module_usb_snd_driver(podhd_driver);
 
 MODULE_DESCRIPTION("Line 6 PODHD USB driver");
 MODULE_LICENSE("GPL");

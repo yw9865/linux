@@ -2508,10 +2508,48 @@ static void hid_free_dynids(struct hid_driver *hdrv)
 	spin_unlock(&hdrv->dyn_lock);
 }
 
+#ifdef CONFIG_USB_FUZZER_DUMP_IDS
+static void hid_device_id_dump_one(const struct hid_device_id *id)
+{
+	char buffer[128];
+	int size = (char *)&id->product + sizeof(id->product) - (char *)id;
+
+	if (id->bus != HID_BUS_ANY && id->bus != BUS_USB)
+		return;
+
+	bin2hex((char *)&buffer[0], (const char *)id, size);
+	buffer[size * 2] = 0;
+	pr_err("HIDID: %s\n", &buffer[0]);
+}
+
+static void hid_device_id_dump_static(struct hid_driver *hdrv)
+{
+	const struct hid_device_id *id = hdrv->id_table;
+
+	for (; id->bus; id++)
+		hid_device_id_dump_one(id);
+}
+
+static void hid_device_id_dump_dynamic(struct hid_driver *hdrv)
+{
+	struct hid_dynid *dynid;
+
+	spin_lock(&hdrv->dyn_lock);
+	list_for_each_entry(dynid, &hdrv->dyn_list, list)
+		hid_device_id_dump_one(&dynid->id);
+	spin_unlock(&hdrv->dyn_lock);
+}
+#endif
+
 const struct hid_device_id *hid_match_device(struct hid_device *hdev,
 					     struct hid_driver *hdrv)
 {
 	struct hid_dynid *dynid;
+
+#ifdef CONFIG_USB_FUZZER_DUMP_IDS
+	hid_device_id_dump_static(hdrv);
+	hid_device_id_dump_dynamic(hdrv);
+#endif
 
 	spin_lock(&hdrv->dyn_lock);
 	list_for_each_entry(dynid, &hdrv->dyn_list, list) {

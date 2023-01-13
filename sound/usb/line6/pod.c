@@ -536,7 +536,7 @@ static struct usb_driver pod_driver = {
 	.id_table = pod_id_table,
 };
 
-module_usb_driver(pod_driver);
+module_usb_snd_driver(pod_driver);
 
 MODULE_DESCRIPTION("Line 6 POD USB driver");
 MODULE_LICENSE("GPL");

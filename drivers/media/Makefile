@@ -2,7 +2,7 @@
 #
 # Makefile for the kernel multimedia device drivers.
 #
-
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_MEDIA) += $(CFLAGS_KCOV)
 #
 # I2C drivers should come before other drivers, otherwise they'll fail
 # when compiled as builtin drivers

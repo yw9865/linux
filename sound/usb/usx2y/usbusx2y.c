@@ -463,4 +463,4 @@ static struct usb_driver snd_usx2y_usb_driver = {
 	.disconnect =	snd_usx2y_disconnect,
 	.id_table =	snd_usx2y_usb_id_table,
 };
-module_usb_driver(snd_usx2y_usb_driver);
+module_usb_snd_driver(snd_usx2y_usb_driver);

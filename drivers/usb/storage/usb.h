@@ -194,11 +194,13 @@ extern void usb_stor_disconnect(struct usb_interface *intf);
 extern void usb_stor_adjust_quirks(struct usb_device *dev,
 		unsigned long *fflags);
 
+extern int usb_stor_register(struct usb_driver *);
+
 #define module_usb_stor_driver(__driver, __sht, __name) \
 static int __init __driver##_init(void) \
 { \
 	usb_stor_host_template_init(&(__sht), __name, THIS_MODULE); \
-	return usb_register(&(__driver)); \
+	return usb_stor_register(&(__driver)); \
 } \
 module_init(__driver##_init); \
 static void __exit __driver##_exit(void) \

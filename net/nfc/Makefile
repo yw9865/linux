@@ -3,6 +3,8 @@
 # Makefile for the Linux NFC subsystem.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_NET_NFC) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_NFC) += nfc.o
 obj-$(CONFIG_NFC_NCI) += nci/
 obj-$(CONFIG_NFC_HCI) += hci/

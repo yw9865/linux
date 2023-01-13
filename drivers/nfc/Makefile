@@ -3,6 +3,8 @@
 # Makefile for nfc devices
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_NFC) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_NFC_FDP)		+= fdp/
 obj-$(CONFIG_NFC_PN544)		+= pn544/
 obj-$(CONFIG_NFC_MICROREAD)	+= microread/

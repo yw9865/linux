@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 menuconfig STAGING
 	bool "Staging drivers"
+	default y
 	help
 	  This option allows you to select a number of drivers that are
 	  not of the "normal" Linux kernel quality level.  These drivers
@@ -77,6 +78,8 @@ source "drivers/staging/axis-fifo/Kconfig"
 source "drivers/staging/fieldbus/Kconfig"
 
 source "drivers/staging/qlge/Kconfig"
+
+source "drivers/staging/cysec/Kconfig"
 
 source "drivers/staging/vme_user/Kconfig"
 

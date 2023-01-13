@@ -3,6 +3,8 @@
 # Makefile for ALSA
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_SOUND_USB) += $(CFLAGS_KCOV)
+
 snd-usb-audio-objs := 	card.o \
 			clock.o \
 			endpoint.o \

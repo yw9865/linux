@@ -2,6 +2,7 @@
 #
 # Makefile for USB Network drivers
 #
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_NET_USB) += $(CFLAGS_KCOV)
 
 obj-$(CONFIG_USB_CATC)		+= catc.o
 obj-$(CONFIG_USB_KAWETH)	+= kaweth.o

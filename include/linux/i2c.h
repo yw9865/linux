@@ -876,6 +876,10 @@ int devm_i2c_add_adapter(struct device *dev, struct i2c_adapter *adapter);
 void i2c_del_adapter(struct i2c_adapter *adap);
 int i2c_add_numbered_adapter(struct i2c_adapter *adap);
 
+#if IS_ENABLED(CONFIG_PERISCOPE_I2C)
+extern int periscope_i2c_register_adapter(struct i2c_adapter *adap);
+#endif
+
 int i2c_register_driver(struct module *owner, struct i2c_driver *driver);
 void i2c_del_driver(struct i2c_driver *driver);
 

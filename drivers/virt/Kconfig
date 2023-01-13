@@ -42,6 +42,25 @@ config FSL_HV_MANAGER
           4) A kernel interface for receiving callbacks when a managed
 	     partition shuts down.
 
+config KCOV_VDEV
+	bool "kcov vdev"
+	depends on KCOV
+	depends on PCI
+	help
+		TODO
+
+config PERISCOPE_I2C
+	bool "i2c vdev"
+	depends on I2C
+	depends on PCI
+	help
+		TODO
+
+config KVM_API_TEST
+	bool "kvm api test"
+	help
+		TODO
+
 source "drivers/virt/vboxguest/Kconfig"
 
 source "drivers/virt/nitro_enclaves/Kconfig"

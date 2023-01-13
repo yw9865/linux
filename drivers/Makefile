@@ -6,6 +6,8 @@
 # Rewritten to use lists instead of if-statements.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER) += $(CFLAGS_KCOV)
+
 obj-y				+= irqchip/
 obj-y				+= bus/
 

@@ -2,6 +2,7 @@
 #
 # Makefile for the USB media device drivers
 #
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_MEDIA_USB) += $(CFLAGS_KCOV)
 
 # DVB USB-only drivers. Please keep it alphabetically sorted by directory name
 # (e. g. LC_ALL=C sort Makefile)

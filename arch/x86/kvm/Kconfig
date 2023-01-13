@@ -99,6 +99,12 @@ config X86_SGX_KVM
 
 	  If unsure, say N.
 
+config KVM_AGAMOTTO
+	bool "KVM for Agamotto"
+	depends on KVM_INTEL
+	help
+          TBD
+
 config KVM_AMD
 	tristate "KVM for AMD processors support"
 	depends on KVM

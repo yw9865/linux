@@ -852,6 +852,41 @@ bool usb_driver_applicable(struct usb_device *udev,
 	return false;
 }
 
+#ifdef CONFIG_USB_FUZZER_DUMP_IDS
+static void usb_device_id_dump_one(const struct usb_device_id *id)
+{
+	char buffer[128];
+	int size = (char *)&id->bInterfaceNumber + sizeof(id->bInterfaceNumber)
+			- (char *)id;
+
+	bin2hex((char *)&buffer[0], (const char *)id, size);
+	buffer[size * 2] = 0;
+	pr_err("USBID: %s\n", &buffer[0]);
+}
+
+static void usb_device_id_dump_static(struct usb_driver *drv)
+{
+	const struct usb_device_id *id = drv->id_table;
+
+	if (id == NULL)
+		return;
+
+	for (; id->idVendor || id->idProduct || id->bDeviceClass ||
+	       id->bInterfaceClass || id->driver_info; id++)
+		usb_device_id_dump_one(id);
+}
+
+static void usb_device_id_dump_dynamic(struct usb_driver *drv)
+{
+	struct usb_dynid *dynid;
+
+	spin_lock(&drv->dynids.lock);
+	list_for_each_entry(dynid, &drv->dynids.list, node)
+		usb_device_id_dump_one(&dynid->id);
+	spin_unlock(&drv->dynids.lock);
+}
+#endif
+
 static int usb_device_match(struct device *dev, struct device_driver *drv)
 {
 	/* devices and interfaces are handled separately */

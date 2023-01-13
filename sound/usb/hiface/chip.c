@@ -273,4 +273,4 @@ static struct usb_driver hiface_usb_driver = {
 	.id_table = device_table,
 };
 
-module_usb_driver(hiface_usb_driver);
+module_usb_snd_driver(hiface_usb_driver);

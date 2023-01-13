@@ -35,6 +35,8 @@ enum {
 	KCOV_TRACE_PC = 0,
 	/* Collecting comparison operands mode. */
 	KCOV_TRACE_CMP = 1,
+	/* Collecting AFL-style edge coverage mode. */
+	KCOV_TRACE_AFL = 2,
 };
 
 /*

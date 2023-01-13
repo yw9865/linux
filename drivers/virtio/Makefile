@@ -1,4 +1,10 @@
 # SPDX-License-Identifier: GPL-2.0
+
+KCOV_INSTRUMENT_virtio.o := n
+KCOV_INSTRUMENT_virtio_pci.o := n
+KCOV_INSTRUMENT_virtio_pci_common.o := n
+KCOV_INSTRUMENT_virtio_ring.o := n
+
 obj-$(CONFIG_VIRTIO) += virtio.o virtio_ring.o
 obj-$(CONFIG_VIRTIO_ANCHOR) += virtio_anchor.o
 obj-$(CONFIG_VIRTIO_PCI_LIB) += virtio_pci_modern_dev.o

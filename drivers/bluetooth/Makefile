@@ -3,6 +3,8 @@
 # Makefile for the Linux Bluetooth HCI device drivers.
 #
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_BLUETOOTH) += $(CFLAGS_KCOV)
+
 obj-$(CONFIG_BT_HCIVHCI)	+= hci_vhci.o
 obj-$(CONFIG_BT_HCIUART)	+= hci_uart.o
 obj-$(CONFIG_BT_HCIBCM203X)	+= bcm203x.o

@@ -14,6 +14,7 @@
 # satisfy certain initialization assumptions in the SCSI layer.
 # *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!
 
+subdir-ccflags-$(CONFIG_KCOV_INSTRUMENT_DRIVER_SCSI) += $(CFLAGS_KCOV)
 
 CFLAGS_aha152x.o =   -DAHA152X_STAT -DAUTOCONF
 

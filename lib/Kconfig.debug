@@ -2053,6 +2053,139 @@ config KCOV_ENABLE_COMPARISONS
 	  These operands can be used by fuzzing engines to improve the quality
 	  of fuzzing coverage.
 
+config KCOV_INSTRUMENT_DRIVER
+	bool "Instrument all drivers/* code"
+	depends on KCOV
+	default n
+	help
+	  If you are doing driver fuzzing, you will want to turn this on
+
+config KCOV_INSTRUMENT_DRIVER_BLUETOOTH
+	bool "Instrument all drivers/bluetooth code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_NFC
+	bool "Instrument all drivers/nfc code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_NET_WIRELESS
+	bool "Instrument all drivers/net/wireless code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_NET_ETHERNET
+	bool "Instrument all drivers/net/ethernet code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_NET_USB
+	bool "Instrument all drivers/net/usb code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_NET_CAN_USB
+	bool "Instrument all drivers/net/can/usb code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_MEDIA_USB
+	bool "Instrument all drivers/media/usb code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_MEDIA
+	bool "Instrument all drivers/media code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_SCSI
+	bool "Instrument all drivers/scsi code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_NET_CORE
+	bool "Instrument all net/core code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_NET_NFC
+	bool "Instrument all net/nfc code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_NET_BLUETOOTH
+	bool "Instrument all net/bluetooth code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_NET_WIRELESS
+	bool "Instrument all net/wireless code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_HID
+	bool "Instrument all drivers/hid code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_DRIVER_USB
+	bool "Instrument all drivers/usb code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_SOUND
+	bool "Instrument all sound code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_SOUND_USB
+	bool "Instrument all sound/usb code"
+	depends on KCOV
+	default n
+	help
+	  -
+
+config KCOV_INSTRUMENT_SOUND_CORE
+	bool "Instrument all sound/core code"
+	depends on KCOV
+	default n
+	help
+	  -
+
 config KCOV_INSTRUMENT_ALL
 	bool "Instrument all code by default"
 	depends on KCOV
